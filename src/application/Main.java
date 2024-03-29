@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         // Загрузка корневого файла fxml (HomePage.fxml)
         Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-        primaryStage.setTitle("Your Application Title"); // Установка заголовка окна
+        primaryStage.setTitle("Калькулятор стоимости строительства дома (примерный)"); // Установка заголовка окна
         primaryStage.setScene(new Scene(root, 600, 400)); // Установка сцены
         primaryStage.show(); // Отображение окна
     }
