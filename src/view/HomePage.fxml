@@ -28,7 +28,7 @@
                         <TextField fx:id="houseWidthInput" layoutX="218.0" layoutY="151.0" />
                         <TextField fx:id="ceilingHeightInput" layoutX="218.0" layoutY="189.0" />
                         <RadioButton fx:id="oneFloorRadioBtn" contentDisplay="TOP" layoutX="239.0" layoutY="227.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" selected="true" />
-                        <RadioButton fx:id="twoFloorsRadioBtn" contentDisplay="TOP" layoutX="295.0" layoutY="227.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" text="1" />
+                        <RadioButton fx:id="twoFloorsRadioBtn" contentDisplay="TOP" layoutX="295.0" layoutY="227.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" />
                         <Label layoutX="244.0" layoutY="251.0" text="1" />
                         <Label layoutX="300.0" layoutY="251.0" text="2" />
                      </children>
@@ -39,7 +39,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="exitBtn" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Выход"/>
+                        <Button fx:id="exitBtn" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Выход" />
                         <Button fx:id="calculationBtn" layoutX="459.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleCalculation" text="Рассчитать" />
                         <Label layoutX="76.0" layoutY="96.0" text="Крыша" />
                         <Label alignment="CENTER" layoutX="246.0" layoutY="23.0" text="Материалы" />

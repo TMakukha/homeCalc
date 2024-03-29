@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
@@ -81,18 +82,71 @@ public class HomePageController {
      */
     @FXML
     private void handleCalculation(ActionEvent event) {
-        // Get house length and width inputs and calculate total price
+        // Check all fields filled
+        if (houseLenghtInput.getText().isEmpty() || houseWidthInput.getText().isEmpty() || ceilingHeightInput.getText().isEmpty() ||
+                roofMaterialChoiceBox.getValue() == null || wallMaterialChoiceBox.getValue() == null || foundationTypeChoiceBox.getValue() == null) {
+            // Throw error if any field is not fielded
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText(null);
+            alert.setContentText("Заполните все обязательные поля!");
+            alert.showAndWait();
+            return;
+        }
+
+        // if all fields filled go calculation
+     // Получение значений из полей
         double length = Double.parseDouble(houseLenghtInput.getText());
         double width = Double.parseDouble(houseWidthInput.getText());
-        double totalPrice = length + width;
+        int floorCount = oneFloorRadioBtn.isSelected() ? 1 : 2;
+
+        // Вычисление площади дома
+        double S = length * width;
+
+        // Вычисление периметра стен
+        double Pwall = (length + width) * 2 * floorCount;
+
+        // Вычисление стоимости фундамента
+        double foundationPrice = foundationTypeChoiceBox.getValue().equals("Свайный") ? 2000 * S : 1600 * S;
+
+        // Вычисление стоимости стен
+        double wallPrice = 0;
+        switch (wallMaterialChoiceBox.getValue()) {
+            case "сруб":
+                wallPrice = Pwall * 3000;
+                break;
+            case "газоблок":
+                wallPrice = Pwall * 700;
+                break;
+            case "кирпич":
+                wallPrice = Pwall * 5000;
+                break;
+        }
+
+        // Вычисление стоимости крыши
+        double roofPrice = 0;
+        switch (roofMaterialChoiceBox.getValue()) {
+            case "односкатная":
+                roofPrice = S * 3000;
+                break;
+            case "двускатная":
+                roofPrice = S * 5000;
+                break;
+            case "прямая":
+                roofPrice = S * 7000;
+                break;
+        }
         
+        // Вычисление общей стоимости
+        double totalPrice = roofPrice + wallPrice + foundationPrice;
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CalcPage.fxml"));
             Parent calcPageParent = loader.load();
             CalcPageController calcPageController = loader.getController();
             calcPageController.updateTotalPrice(totalPrice);
             AnchorPane root = (AnchorPane) calculationBtn.getScene().getRoot();
-            
+
             root.getChildren().setAll(calcPageParent.getChildrenUnmodifiable());
         } catch (IOException e) {
             e.printStackTrace();
