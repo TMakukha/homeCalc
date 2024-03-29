@@ -18,7 +18,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="exitBtn" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Выход" />
-                        <Button fx:id="calculationBtn" layoutX="459.0" layoutY="362.0" mnemonicParsing="false" text="Рассчитать" />
+                        <Button fx:id="calculationBtn" layoutX="459.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleCalculation" text="Рассчитать" />
                         <Label layoutX="76.0" layoutY="120.0" text="Длина м." />
                         <Label layoutX="76.0" layoutY="79.0" text="Параметры дома" />
                         <Label layoutX="76.0" layoutY="155.0" text="Ширина м." />
@@ -40,7 +40,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="exitBtn" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Выход"/>
-                        <Button fx:id="calculationBtn" layoutX="459.0" layoutY="362.0" mnemonicParsing="false" text="Рассчитать" />
+                        <Button fx:id="calculationBtn" layoutX="459.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleCalculation" text="Рассчитать" />
                         <Label layoutX="76.0" layoutY="96.0" text="Крыша" />
                         <Label alignment="CENTER" layoutX="246.0" layoutY="23.0" text="Материалы" />
                         <Label layoutX="78.0" layoutY="142.0" text="Стены" />
