@@ -10,14 +10,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Загрузка корневого файла fxml (HomePage.fxml)
-        Parent root = FXMLLoader.load(getClass().getResource("/view/HomePage.fxml"));
-        primaryStage.setTitle("Калькулятор стоимости строительства дома (примерный)"); // Установка заголовка окна
-        primaryStage.setScene(new Scene(root, 600, 400)); // Установка сцены
-        primaryStage.show(); // Отображение окна
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomePage.fxml"));
+        Parent root = loader.load();        
+
+        primaryStage.setTitle("Калькулятор стоимости строительства дома (примерный)");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
-        launch(args); // Запуск приложения
+        launch(args);
     }
 }
+

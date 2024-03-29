@@ -6,17 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import utils.HouseCalculator;
 
-public class HomePageController {
+public class HomePageController extends BaseController {
     
     @FXML
     private Button exitBtn;
@@ -61,19 +59,11 @@ public class HomePageController {
         ceilingHeightInput.setText("0");
         
         // exit button listener
-        exitBtn.setOnAction(this::handleExit);
+        initializeExitButton(exitBtn);
         
         // radio buttons listener
         oneFloorRadioBtn.setOnAction(this::handleOneFloorSelected);
         twoFloorsRadioBtn.setOnAction(this::handleTwoFloorsSelected);
-    }
-    
-    /**
-     * Close application button
-     * @param event close applcation
-     */
-    private void handleExit(ActionEvent event) {
-        System.exit(0);
     }
     
     /**
@@ -85,7 +75,7 @@ public class HomePageController {
         // Check all fields filled
         if (houseLenghtInput.getText().isEmpty() || houseWidthInput.getText().isEmpty() || ceilingHeightInput.getText().isEmpty() ||
                 roofMaterialChoiceBox.getValue() == null || wallMaterialChoiceBox.getValue() == null || foundationTypeChoiceBox.getValue() == null) {
-            // Throw error if any field is not fielded
+            // Throw error if any field is not filled
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
             alert.setHeaderText(null);
@@ -95,50 +85,14 @@ public class HomePageController {
         }
 
         // if all fields filled go calculation
-     // Получение значений из полей
         double length = Double.parseDouble(houseLenghtInput.getText());
         double width = Double.parseDouble(houseWidthInput.getText());
         int floorCount = oneFloorRadioBtn.isSelected() ? 1 : 2;
+        String roofMaterial = roofMaterialChoiceBox.getValue();
+        String wallMaterial = wallMaterialChoiceBox.getValue();
+        String foundationType = foundationTypeChoiceBox.getValue();
 
-        // Вычисление площади дома
-        double S = length * width;
-
-        // Вычисление периметра стен
-        double Pwall = (length + width) * 2 * floorCount;
-
-        // Вычисление стоимости фундамента
-        double foundationPrice = foundationTypeChoiceBox.getValue().equals("Свайный") ? 2000 * S : 1600 * S;
-
-        // Вычисление стоимости стен
-        double wallPrice = 0;
-        switch (wallMaterialChoiceBox.getValue()) {
-            case "сруб":
-                wallPrice = Pwall * 3000;
-                break;
-            case "газоблок":
-                wallPrice = Pwall * 700;
-                break;
-            case "кирпич":
-                wallPrice = Pwall * 5000;
-                break;
-        }
-
-        // Вычисление стоимости крыши
-        double roofPrice = 0;
-        switch (roofMaterialChoiceBox.getValue()) {
-            case "односкатная":
-                roofPrice = S * 3000;
-                break;
-            case "двускатная":
-                roofPrice = S * 5000;
-                break;
-            case "прямая":
-                roofPrice = S * 7000;
-                break;
-        }
-        
-        // Вычисление общей стоимости
-        double totalPrice = roofPrice + wallPrice + foundationPrice;
+        double totalPrice = HouseCalculator.calculateTotalPrice(length, width, floorCount, roofMaterial, wallMaterial, foundationType);
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CalcPage.fxml"));
