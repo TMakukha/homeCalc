@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
@@ -81,18 +82,30 @@ public class HomePageController {
      */
     @FXML
     private void handleCalculation(ActionEvent event) {
-        // Get house length and width inputs and calculate total price
+        // Check all fields filled
+        if (houseLenghtInput.getText().isEmpty() || houseWidthInput.getText().isEmpty() || ceilingHeightInput.getText().isEmpty() ||
+                roofMaterialChoiceBox.getValue() == null || wallMaterialChoiceBox.getValue() == null || foundationTypeChoiceBox.getValue() == null) {
+            // Throw error if any field is not fielded
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ошибка");
+            alert.setHeaderText(null);
+            alert.setContentText("Заполните все обязательные поля!");
+            alert.showAndWait();
+            return;
+        }
+
+        // if all fields filled go calculation
         double length = Double.parseDouble(houseLenghtInput.getText());
         double width = Double.parseDouble(houseWidthInput.getText());
         double totalPrice = length + width;
-        
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CalcPage.fxml"));
             Parent calcPageParent = loader.load();
             CalcPageController calcPageController = loader.getController();
             calcPageController.updateTotalPrice(totalPrice);
             AnchorPane root = (AnchorPane) calculationBtn.getScene().getRoot();
-            
+
             root.getChildren().setAll(calcPageParent.getChildrenUnmodifiable());
         } catch (IOException e) {
             e.printStackTrace();
