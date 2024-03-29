@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CalcPageController">
    <children>
       <Button fx:id="exitBtn" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Выход" />
@@ -16,5 +15,14 @@
          </font>
       </Label>
       <Label fx:id="totalPriceLabel" layoutX="134.0" layoutY="298.0" />
+      <Label layoutX="116.0" layoutY="107.0" text="Параметры дома:" />
+      <Label layoutX="352.0" layoutY="107.0" text="Типы конструкции:" />
+      <Label fx:id="lengthLabel" layoutX="116.0" layoutY="140.0" />
+      <Label fx:id="widthLabel" layoutX="116.0" layoutY="167.0" />
+      <Label fx:id="floorsCountLabel" layoutX="116.0" layoutY="192.0" />
+      <Label fx:id="squareLabel" layoutX="116.0" layoutY="218.0"  />
+      <Label fx:id="roofLabel" layoutX="352.0" layoutY="140.0" />
+      <Label fx:id="wallLabel" layoutX="352.0" layoutY="167.0"  />
+      <Label fx:id="foundationLabel" layoutX="352.0" layoutY="192.0"  />
    </children>
 </AnchorPane>

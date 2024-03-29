@@ -98,6 +98,13 @@ public class HomePageController extends BaseController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CalcPage.fxml"));
             Parent calcPageParent = loader.load();
             CalcPageController calcPageController = loader.getController();
+            calcPageController.updateLengthOutput(length);
+            calcPageController.updateWidthOutput(width);
+            calcPageController.updateFloorsCountOutput(floorCount);
+            calcPageController.updateSquareOutput(length * width);
+            calcPageController.updateRoofOutput(roofMaterial);
+            calcPageController.updateWallOutput(wallMaterial);
+            calcPageController.updateFoundationOutput(foundationType);
             calcPageController.updateTotalPrice(totalPrice);
             AnchorPane root = (AnchorPane) calculationBtn.getScene().getRoot();
 
