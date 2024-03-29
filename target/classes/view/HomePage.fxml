@@ -9,12 +9,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" side="RIGHT" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Дом">
+          <Tab fx:id="homeTab" text="Дом">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -25,30 +24,30 @@
                         <Label layoutX="76.0" layoutY="155.0" text="Ширина м." />
                         <Label layoutX="76.0" layoutY="193.0" text="Высота потолков" />
                         <Label layoutX="71.0" layoutY="228.0" text="Количество этажей" />
-                        <TextField layoutX="218.0" layoutY="116.0" />
-                        <TextField layoutX="218.0" layoutY="151.0" />
-                        <TextField layoutX="218.0" layoutY="189.0" />
-                        <RadioButton contentDisplay="TOP" layoutX="239.0" layoutY="227.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" selected="true" />
-                        <RadioButton contentDisplay="TOP" layoutX="295.0" layoutY="227.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" text="1" />
+                        <TextField fx:id="houseLenghtInput" layoutX="218.0" layoutY="116.0" />
+                        <TextField fx:id="houseWidthInput" layoutX="218.0" layoutY="151.0" />
+                        <TextField fx:id="ceilingHeightInput" layoutX="218.0" layoutY="189.0" />
+                        <RadioButton fx:id="oneFloorRadioBtn" contentDisplay="TOP" layoutX="239.0" layoutY="227.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" selected="true" />
+                        <RadioButton fx:id="twoFloorsRadioBtn" contentDisplay="TOP" layoutX="295.0" layoutY="227.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="18.0" text="1" />
                         <Label layoutX="244.0" layoutY="251.0" text="1" />
                         <Label layoutX="300.0" layoutY="251.0" text="2" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Материалы">
+          <Tab fx:id="materialTab" text="Материалы">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="exitBtn" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Выход" />
+                        <Button fx:id="exitBtn" layoutX="14.0" layoutY="362.0" mnemonicParsing="false" text="Выход"/>
                         <Button fx:id="calculationBtn" layoutX="459.0" layoutY="362.0" mnemonicParsing="false" text="Рассчитать" />
                         <Label layoutX="76.0" layoutY="96.0" text="Крыша" />
                         <Label alignment="CENTER" layoutX="246.0" layoutY="23.0" text="Материалы" />
                         <Label layoutX="78.0" layoutY="142.0" text="Стены" />
                         <Label layoutX="76.0" layoutY="192.0" text="Фундамент" />
-                        <ChoiceBox layoutX="210.0" layoutY="138.0" prefWidth="150.0" />
-                        <ChoiceBox layoutX="210.0" layoutY="92.0" prefWidth="150.0" />
-                        <ChoiceBox layoutX="210.0" layoutY="188.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="wallMaterialChoiceBox" layoutX="210.0" layoutY="138.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="roofMaterialChoiceBox" layoutX="210.0" layoutY="92.0" prefWidth="150.0" />
+                        <ChoiceBox fx:id="foundationTypeChoiceBox" layoutX="210.0" layoutY="188.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
             </content>
