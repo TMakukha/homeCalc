@@ -1,11 +1,19 @@
 package controllers;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class HomePageController {
     
@@ -54,9 +62,6 @@ public class HomePageController {
         // exit button listener
         exitBtn.setOnAction(this::handleExit);
         
-        // calculation button listener
-        calculationBtn.setOnAction(this::handleCalculation);
-        
         // radio buttons listener
         oneFloorRadioBtn.setOnAction(this::handleOneFloorSelected);
         twoFloorsRadioBtn.setOnAction(this::handleTwoFloorsSelected);
@@ -74,7 +79,24 @@ public class HomePageController {
      * Calculation home price
      * @param event
      */
+    @FXML
     private void handleCalculation(ActionEvent event) {
+        // Get house length and width inputs and calculate total price
+        double length = Double.parseDouble(houseLenghtInput.getText());
+        double width = Double.parseDouble(houseWidthInput.getText());
+        double totalPrice = length + width;
+        
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CalcPage.fxml"));
+            Parent calcPageParent = loader.load();
+            CalcPageController calcPageController = loader.getController();
+            calcPageController.updateTotalPrice(totalPrice);
+            AnchorPane root = (AnchorPane) calculationBtn.getScene().getRoot();
+            
+            root.getChildren().setAll(calcPageParent.getChildrenUnmodifiable());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
     /**
