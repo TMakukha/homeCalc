@@ -49,22 +49,21 @@
 	    	<groupId>junit</groupId>
 	    	<artifactId>junit</artifactId>
 	    	<version>4.13.1</version>
-	    	
 		</dependency>
-		 <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>17</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.openjfx</groupId>
-	        <artifactId>javafx-fxml</artifactId>
-	        <version>17</version>
-	    </dependency>
+		<dependency>
+		    <groupId>org.openjfx</groupId>
+		    <artifactId>javafx-fxml</artifactId>
+		    <version>22</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.openjfx</groupId>
+		    <artifactId>javafx-controls</artifactId>
+		    <version>22</version>
+		</dependency>
 	    <dependency>
 	        <groupId>org.openjfx</groupId>
 	        <artifactId>javafx-graphics</artifactId>
-	        <version>17</version>
+	        <version>22</version>
 	    </dependency>
 	</dependencies>
 </project>
